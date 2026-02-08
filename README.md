@@ -200,17 +200,31 @@ Nosh is **complementary** — it fills the gap between "here's my sitemap" (llms
 
 ---
 
+## GEO: Generative Engine Optimization
+
+SEO optimized your content for Google's crawlers. **GEO optimizes your content for AI agents.**
+
+AI search engines (Perplexity, ChatGPT search, Claude, Google AI Overviews) are increasingly how people find information. These engines scrape your HTML and try to extract answers. If they get it wrong, they hallucinate. If they get it right, they might not cite you.
+
+Nosh fixes both problems:
+
+- **Accuracy** — agents get structured facts, not parsed prose. No more hallucinated steps or missed prerequisites.
+- **Attribution** — the `url` field points back to your page. The structured data makes your content easier to cite correctly.
+- **Discoverability** — noshed content is 4.1x more token-efficient. Agents can consume more of your site for the same cost, meaning more of your content surfaces in AI-generated answers.
+- **Priority** — as AI search engines learn to look for nosh data, sites that provide it will be preferred sources. Same flywheel that made sitemaps and schema.org essential for SEO.
+
+**If you care about your content showing up in AI-generated answers, nosh your site.**
+
+---
+
 ## Talk Nosh 🗣️
 
-Nosh is a real English word — it means to snack, to munch. You're putting out a little snack for AI agents to consume. They don't need the full meal (your HTML with nav, sidebar, footer) — they just need the nosh.
+Nosh is a real English word — it means to snack, to munch (from Yiddish). You're putting out a little snack for AI agents to consume. They don't need the full meal (your HTML with nav, sidebar, footer, cookie banner) — they just need the nosh.
 
-Use it as a verb:
-
-- **"Did you nosh it?"** — Does this post have a .nosh file?
-- **"Nosh your posts"** — Add .nosh files to your content
-- **"Is it noshed?"** — Is the content available in nosh format?
-- **"Drop a nosh"** — Create a .nosh companion file
-- **"That site is noshed up"** — The whole site has .nosh files
+- **"Did you nosh it?"** — Did you add structured agent data to that post?
+- **"Nosh your posts"** — Add nosh to your content
+- **"Is it noshed?"** — Does the page have agent-readable structured content?
+- **"That site is noshed up"** — Full nosh coverage, every page
 
 > *"I just published that new blog post."*
 > *"Oh nice, did you nosh it? You'll get way better pickup in AI search."*
