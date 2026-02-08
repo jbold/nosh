@@ -48,26 +48,7 @@ A `.nosh` file is JSON with a simple schema: 4 required fields, typed content, a
 
 ## Quick Start
 
-### Option 1: Hand-write it (2 minutes)
-
-Create a `<script>` block in your page's `<head>`:
-
-```html
-<script type="application/nosh+json">
-{
-  "nosh": "1.0",
-  "type": "article",
-  "title": "Your Post Title",
-  "content": {
-    "body": "The key knowledge from your post, summarized for agents."
-  }
-}
-</script>
-```
-
-That's a valid nosh. Add more fields as needed — see the [schema](#the-schema) below.
-
-### Option 2: Auto-generate from your template (any platform)
+### Step 1: Add nosh to your template (any platform)
 
 Nosh works with any platform that lets you put a `<script>` tag in the `<head>`. Add it to your base template once and every page gets noshed automatically:
 
@@ -84,7 +65,7 @@ The pattern is always the same: pull structured data from your post's metadata/f
 
 See [zola-template/](zola-template/) for a reference implementation.
 
-### Option 3: Validate your nosh
+### Step 2: Validate your nosh
 
 ```bash
 # Build the validator from source
