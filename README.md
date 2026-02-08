@@ -46,7 +46,62 @@ A `.nosh` file is JSON with a simple schema: 4 required fields, typed content, a
 
 ---
 
-## Quick Example
+## Quick Start
+
+### Option 1: Hand-write it (2 minutes)
+
+Create a `<script>` block in your page's `<head>`:
+
+```html
+<script type="application/nosh+json">
+{
+  "nosh": "1.0",
+  "type": "article",
+  "title": "Your Post Title",
+  "content": {
+    "body": "The key knowledge from your post, summarized for agents."
+  }
+}
+</script>
+```
+
+That's a valid nosh. Add more fields as needed — see the [schema](#the-schema) below.
+
+### Option 2: Auto-generate with Zola (set once, forget)
+
+Add nosh data to your post's TOML frontmatter:
+
+```toml
+[extra.nosh]
+type = "tutorial"
+
+[extra.nosh.content]
+body = "This tutorial walks you through..."
+prerequisites = ["Node.js", "An API key"]
+
+[[extra.nosh.content.steps]]
+title = "Install the thing"
+text = "Run npm install and configure..."
+```
+
+The Zola template auto-embeds the nosh block on every build. Edit the post, push, nosh updates. See [zola-template/](zola-template/) for setup.
+
+### Option 3: Validate your nosh
+
+```bash
+# Build the validator from source
+cd validator && cargo build --release
+
+# Validate a .nosh file
+./target/release/nosh validate my-post.nosh
+
+# Validate a directory
+./target/release/nosh validate ./content/
+```
+
+---
+
+## Example
 
 ```json
 {
