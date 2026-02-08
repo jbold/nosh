@@ -17,8 +17,9 @@ Meanwhile, the content creator *knows* the structure. They know the steps, the p
 Drop a `.nosh` file next to your page. Done.
 
 ```
-/blog/my-post/index.html          ← for humans
-/blog/my-post/my-post.nosh        ← for agents
+/blog/                             ← index (list of posts, for humans)
+/blog/post-title/                  ← the post (for humans)
+/blog/post-title.nosh              ← the post (for agents)
 ```
 
 A `.nosh` file is JSON with a simple schema: 4 required fields, typed content, and room for whatever domain-specific data matters for your page.
