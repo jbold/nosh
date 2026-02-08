@@ -46,6 +46,23 @@ A `.nosh` file is JSON with a simple schema: 4 required fields, typed content, a
 
 ---
 
+## Table of Contents
+
+- [Quick Start](#quick-start)
+- [Example](#example)
+- [The Schema](#the-schema)
+- [Content Types](#content-types)
+- [Discovery](#discovery)
+- [Validator CLI](#validator-cli)
+- [Benchmark: Token Efficiency](#benchmark-token-efficiency)
+- [How Nosh Relates to Other Standards](#how-nosh-relates-to-other-standards)
+- [GEO: Generative Engine Optimization](#geo-generative-engine-optimization)
+- [Talk Nosh](#talk-nosh-)
+- [Project Structure](#project-structure)
+- [License](#license)
+
+---
+
 ## Quick Start
 
 ### Step 1: Add nosh to your template (any platform)
