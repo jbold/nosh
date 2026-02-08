@@ -1,0 +1,10 @@
+{
+  "nosh": "1.0",
+  "type": "tutorial",
+  "title": "Tutorial with unknown content field",
+  "content": {
+    "body": "A tutorial body.",
+    "steps": [{"title": "Step 1", "text": "Do something."}],
+    "unknown_field": "This should be rejected by additionalProperties: false"
+  }
+}

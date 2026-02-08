@@ -1,0 +1,48 @@
+{#
+  Nosh companion file template.
+
+  This template renders a page as a .nosh JSON file.
+  Use it by creating a content file with:
+    template = "nosh.html"
+
+  Required extra front matter fields:
+    nosh_type     — Content type (article, tutorial, recipe, etc.)
+    nosh_body     — Main text content (string)
+
+  Optional extra fields (vary by type):
+    nosh_description, nosh_language, nosh_authors, nosh_tags,
+    nosh_published, nosh_updated, nosh_related
+
+  Type-specific fields are passed through via nosh_content_* keys.
+#}
+{% set nosh_version = config.extra.nosh_version | default(value="1.0") -%}
+{
+  "nosh": "{{ nosh_version }}",
+  "type": "{{ page.extra.nosh_type | default(value="article") }}",
+  "title": "{{ page.title | replace(from='"', to='\\"') }}"
+{%- if page.extra.nosh_description is defined %},
+  "description": "{{ page.extra.nosh_description | replace(from='"', to='\\"') }}"
+{%- endif %}
+{%- if page.permalink is defined %},
+  "url": "{{ page.permalink | trim_end_matches(pat="/") }}"
+{%- endif %}
+{%- if page.extra.nosh_language is defined %},
+  "language": "{{ page.extra.nosh_language }}"
+{%- endif %}
+{%- if page.extra.nosh_authors is defined %},
+  "authors": {{ page.extra.nosh_authors | json_encode() | safe }}
+{%- endif %}
+{%- if page.extra.nosh_published is defined %},
+  "published": "{{ page.extra.nosh_published }}"
+{%- endif %}
+{%- if page.extra.nosh_updated is defined %},
+  "updated": "{{ page.extra.nosh_updated }}"
+{%- endif %}
+{%- if page.extra.nosh_tags is defined %},
+  "tags": {{ page.extra.nosh_tags | json_encode() | safe }}
+{%- endif %}
+{%- if page.extra.nosh_related is defined %},
+  "related": {{ page.extra.nosh_related | json_encode() | safe }}
+{%- endif %},
+  "content": {{ page.extra.nosh_content | default(value="{}") | safe }}
+}

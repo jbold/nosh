@@ -1,0 +1,8 @@
+{
+  "nosh": "v1.0",
+  "type": "article",
+  "title": "Bad version format",
+  "content": {
+    "body": "Version has a leading 'v' which violates the pattern."
+  }
+}

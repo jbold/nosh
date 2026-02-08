@@ -1,0 +1,19 @@
+{
+  "nosh": "1.0",
+  "type": "profile",
+  "title": "Jane Developer",
+  "description": "Full-stack developer and open-source contributor.",
+  "url": "https://janedeveloper.example.com",
+  "language": "en",
+  "tags": ["developer", "open-source", "rust"],
+  "content": {
+    "body": "Jane is a full-stack developer specializing in Rust and web standards. She contributes to several open-source projects including the Nosh specification and its reference implementations. Previously, she led the web platform team at Acme Corp.",
+    "name": "Jane Developer",
+    "role": "Senior Software Engineer",
+    "links": [
+      "https://github.com/janedeveloper",
+      "https://janedeveloper.example.com",
+      "https://mastodon.social/@janedeveloper"
+    ]
+  }
+}

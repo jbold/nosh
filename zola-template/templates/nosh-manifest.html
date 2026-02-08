@@ -1,0 +1,28 @@
+{#
+  Nosh discovery manifest template.
+
+  Generates the /.well-known/nosh manifest JSON file listing all pages
+  that have nosh_type set in their front matter.
+
+  Place this at content/.well-known/nosh/index.md with:
+    template = "nosh-manifest.html"
+#}
+{% set nosh_version = config.extra.nosh_version | default(value="1.0") -%}
+{% set all_pages = get_section(path="_index.md", metadata_only=true) -%}
+{
+  "nosh": "{{ nosh_version }}",
+  "pages": [
+{%- set_global comma = false -%}
+{%- for page in all_pages.pages -%}
+{%- if page.extra.nosh_type is defined %}
+{% if comma %},{% endif -%}
+    {
+      "url": "{{ page.permalink | trim_end_matches(pat="/") }}.nosh",
+      "type": "{{ page.extra.nosh_type }}",
+      "title": "{{ page.title | replace(from='"', to='\\"') }}"
+    }
+{%- set_global comma = true -%}
+{%- endif -%}
+{%- endfor %}
+  ]
+}

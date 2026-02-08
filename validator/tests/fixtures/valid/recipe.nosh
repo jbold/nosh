@@ -1,0 +1,48 @@
+{
+  "nosh": "1.0",
+  "type": "recipe",
+  "title": "Classic Margherita Pizza",
+  "description": "A simple, authentic Margherita pizza with fresh mozzarella and basil.",
+  "language": "en",
+  "tags": ["pizza", "italian", "vegetarian"],
+  "content": {
+    "body": "The Margherita pizza is a classic Neapolitan pizza topped with San Marzano tomato sauce, fresh mozzarella, basil, and extra-virgin olive oil. Simple ingredients, extraordinary flavor.",
+    "ingredients": [
+      "1 pizza dough ball (250g)",
+      "100g San Marzano tomatoes, crushed",
+      "125g fresh mozzarella, sliced",
+      "Fresh basil leaves",
+      "2 tbsp extra-virgin olive oil",
+      "Salt to taste"
+    ],
+    "steps": [
+      {
+        "title": "Preheat the oven",
+        "text": "Preheat your oven to 500°F (260°C) with a pizza stone or steel inside for at least 30 minutes."
+      },
+      {
+        "title": "Shape the dough",
+        "text": "Stretch the dough ball into a 12-inch round on a floured surface. Transfer to a floured peel or parchment paper."
+      },
+      {
+        "title": "Add the sauce",
+        "text": "Spread the crushed tomatoes evenly over the dough, leaving a 1-inch border. Season with a pinch of salt."
+      },
+      {
+        "title": "Add toppings",
+        "text": "Distribute the mozzarella slices over the sauce. Drizzle with olive oil."
+      },
+      {
+        "title": "Bake",
+        "text": "Slide the pizza onto the hot stone and bake for 8-10 minutes until the crust is golden and the cheese is bubbling."
+      },
+      {
+        "title": "Finish and serve",
+        "text": "Remove from oven, top with fresh basil leaves, and serve immediately."
+      }
+    ],
+    "prep_time": "20 minutes",
+    "cook_time": "10 minutes",
+    "servings": "2"
+  }
+}

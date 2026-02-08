@@ -1,0 +1,37 @@
+{
+  "nosh": "1.0",
+  "type": "tutorial",
+  "title": "Getting Started with Docker",
+  "description": "Learn Docker basics in 15 minutes.",
+  "language": "en",
+  "authors": ["Jane Developer"],
+  "published": "2026-02-08",
+  "tags": ["docker", "containers", "tutorial"],
+  "content": {
+    "body": "This tutorial walks you through the basics of Docker, from pulling your first image to running a container.",
+    "prerequisites": [
+      "Docker installed on your machine",
+      "Terminal or command-line access",
+      "Basic familiarity with the command line"
+    ],
+    "steps": [
+      {
+        "title": "Pull an image",
+        "text": "Run: docker pull nginx. This downloads the official Nginx image from Docker Hub."
+      },
+      {
+        "title": "Start a container",
+        "text": "Run: docker run -d -p 80:80 nginx. This starts Nginx in the background, mapping port 80."
+      },
+      {
+        "title": "Verify it works",
+        "text": "Open http://localhost in your browser. You should see the Nginx welcome page."
+      },
+      {
+        "title": "Stop the container",
+        "text": "Run: docker ps to find the container ID, then docker stop <id> to stop it."
+      }
+    ],
+    "duration": "15 minutes"
+  }
+}

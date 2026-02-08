@@ -1,0 +1,8 @@
+{
+  "nosh": "1.0",
+  "type": "article",
+  "title": "Body is a number",
+  "content": {
+    "body": 42
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "nosh": "1.0",
+  "type": "product",
+  "title": "ErgoDesk Pro Standing Desk",
+  "description": "A height-adjustable standing desk with programmable presets.",
+  "url": "https://example.com/products/ergodesk-pro",
+  "tags": ["furniture", "standing-desk", "ergonomic"],
+  "content": {
+    "body": "The ErgoDesk Pro is an electric height-adjustable standing desk designed for all-day comfort. Features a solid bamboo top, dual motors for smooth adjustment, and a programmable controller with 4 height presets.",
+    "price": "599.00",
+    "currency": "USD",
+    "features": [
+      "Electric dual-motor height adjustment (25.5\" to 51\")",
+      "Solid bamboo desktop (60\" x 30\")",
+      "4 programmable height presets",
+      "Anti-collision detection",
+      "Cable management tray included",
+      "Weight capacity: 350 lbs"
+    ]
+  }
+}

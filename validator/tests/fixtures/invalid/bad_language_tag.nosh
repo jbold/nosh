@@ -1,0 +1,9 @@
+{
+  "nosh": "1.0",
+  "type": "article",
+  "title": "Bad language tag",
+  "language": "123-invalid",
+  "content": {
+    "body": "Language tag does not match BCP 47 pattern."
+  }
+}

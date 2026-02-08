@@ -1,0 +1,32 @@
+{
+  "nosh": "1.0",
+  "type": "faq",
+  "title": "Nosh Specification FAQ",
+  "description": "Frequently asked questions about the Nosh specification.",
+  "tags": ["nosh", "faq", "specification"],
+  "content": {
+    "body": "Common questions about creating, consuming, and validating Nosh files.",
+    "questions": [
+      {
+        "question": "What is a .nosh file?",
+        "answer": "A .nosh file is a JSON companion file that contains the structured knowledge of a web page, designed for AI agent consumption."
+      },
+      {
+        "question": "What are the required fields?",
+        "answer": "Every .nosh file must have exactly 4 fields: nosh (version), type (content type), title (page heading), and content (with at least a body field)."
+      },
+      {
+        "question": "Can I use custom content types?",
+        "answer": "Yes. The taxonomy of 10 types is extensible. Custom types are accepted but may not be understood by all agents, which will fall back to article behavior."
+      },
+      {
+        "question": "How do AI agents find .nosh files?",
+        "answer": "Through 4 discovery mechanisms in priority order: /.well-known/nosh manifest, robots.txt directive, llms.txt references, or HTML link tags."
+      },
+      {
+        "question": "Is Nosh a replacement for JSON-LD?",
+        "answer": "No. Nosh provides structured page content (the knowledge); JSON-LD provides entity metadata and relationships. They are complementary."
+      }
+    ]
+  }
+}

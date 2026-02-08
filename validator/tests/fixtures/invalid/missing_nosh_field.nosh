@@ -1,0 +1,7 @@
+{
+  "type": "article",
+  "title": "Missing nosh field",
+  "content": {
+    "body": "This file lacks the required nosh version field."
+  }
+}

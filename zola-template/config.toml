@@ -1,0 +1,10 @@
+base_url = "https://example.com"
+title = "My Nosh-Enabled Site"
+generate_feeds = false
+compile_sass = false
+
+[extra]
+# Enable Nosh companion file generation.
+# Set this to true and configure nosh_* variables on each page.
+nosh_enabled = true
+nosh_version = "1.0"

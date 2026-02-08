@@ -1,0 +1,40 @@
+{
+  "nosh": "1.0",
+  "type": "api-reference",
+  "title": "Users API Reference",
+  "description": "Complete reference for the Users API endpoints.",
+  "url": "https://api.example.com/docs/users",
+  "language": "en",
+  "tags": ["api", "users", "rest"],
+  "content": {
+    "body": "The Users API provides endpoints for creating, reading, updating, and deleting user accounts. All endpoints require authentication via Bearer token.",
+    "base_url": "https://api.example.com/v1",
+    "endpoints": [
+      {
+        "method": "GET",
+        "path": "/users",
+        "description": "List all users. Supports pagination via ?page= and ?per_page= query parameters."
+      },
+      {
+        "method": "GET",
+        "path": "/users/{id}",
+        "description": "Retrieve a single user by their unique ID."
+      },
+      {
+        "method": "POST",
+        "path": "/users",
+        "description": "Create a new user. Requires name and email in the request body."
+      },
+      {
+        "method": "PUT",
+        "path": "/users/{id}",
+        "description": "Update an existing user. Partial updates are supported."
+      },
+      {
+        "method": "DELETE",
+        "path": "/users/{id}",
+        "description": "Delete a user by ID. Returns 204 on success."
+      }
+    ]
+  }
+}

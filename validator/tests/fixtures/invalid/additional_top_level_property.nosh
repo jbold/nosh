@@ -1,0 +1,9 @@
+{
+  "nosh": "1.0",
+  "type": "article",
+  "title": "Extra top-level field",
+  "content": {
+    "body": "This file has an unknown top-level property."
+  },
+  "bogus_field": true
+}
