@@ -67,24 +67,22 @@ Create a `<script>` block in your page's `<head>`:
 
 That's a valid nosh. Add more fields as needed — see the [schema](#the-schema) below.
 
-### Option 2: Auto-generate with Zola (set once, forget)
+### Option 2: Auto-generate from your template (any platform)
 
-Add nosh data to your post's TOML frontmatter:
+Nosh works with any platform that lets you put a `<script>` tag in the `<head>`. Add it to your base template once and every page gets noshed automatically:
 
-```toml
-[extra.nosh]
-type = "tutorial"
+**Hugo** — in `layouts/_default/baseof.html`
+**Jekyll** — in `_includes/head.html`
+**Next.js** — in your `<Head>` component
+**WordPress** — in `header.php` or via a plugin
+**Astro** — in your `<head>` layout
+**Zola** — in `templates/base.html`
+**Eleventy** — in your base layout
+**Any CMS** — anywhere you can inject into `<head>`
 
-[extra.nosh.content]
-body = "This tutorial walks you through..."
-prerequisites = ["Node.js", "An API key"]
+The pattern is always the same: pull structured data from your post's metadata/frontmatter, render it as JSON inside a `<script type="application/nosh+json">` tag. Edit the post, rebuild/save, nosh updates with it.
 
-[[extra.nosh.content.steps]]
-title = "Install the thing"
-text = "Run npm install and configure..."
-```
-
-The Zola template auto-embeds the nosh block on every build. Edit the post, push, nosh updates. See [zola-template/](zola-template/) for setup.
+See [zola-template/](zola-template/) for a reference implementation.
 
 ### Option 3: Validate your nosh
 
