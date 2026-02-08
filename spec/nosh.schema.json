@@ -1,0 +1,404 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nosh.land/schema/nosh.schema.json",
+  "title": "Nosh File",
+  "description": "Schema for Nosh companion files — structured, machine-readable content for AI agents.",
+  "type": "object",
+  "required": ["nosh", "type", "title", "content"],
+  "properties": {
+    "nosh": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+$",
+      "description": "Nosh specification version (MAJOR.MINOR semver, e.g. \"1.0\")."
+    },
+    "type": {
+      "type": "string",
+      "description": "Content type from the Nosh taxonomy. Known types: article, tutorial, api-reference, product, recipe, faq, changelog, dataset, event, profile. Custom types are permitted."
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The page's primary heading."
+    },
+    "content": {
+      "type": "object",
+      "required": ["body"],
+      "properties": {
+        "body": {
+          "description": "Main text content of the page.",
+          "oneOf": [
+            { "type": "string", "minLength": 1 },
+            {
+              "type": "array",
+              "items": { "type": "string" },
+              "minItems": 1
+            }
+          ]
+        }
+      },
+      "description": "Structured knowledge payload. Shape varies by content type but always includes body."
+    },
+    "description": {
+      "type": "string",
+      "description": "Brief summary of the page."
+    },
+    "url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Canonical URL of the companion HTML page."
+    },
+    "language": {
+      "type": "string",
+      "pattern": "^[a-zA-Z]{2,3}(-[a-zA-Z0-9]{1,8})*$",
+      "description": "BCP 47 language tag (e.g. \"en\", \"en-US\", \"ja\")."
+    },
+    "authors": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Author names."
+    },
+    "published": {
+      "type": "string",
+      "description": "ISO 8601 date of original publication (e.g. \"2026-02-08\" or \"2026-02-08T14:30:00Z\")."
+    },
+    "updated": {
+      "type": "string",
+      "description": "ISO 8601 date of last update."
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Topic tags for categorization."
+    },
+    "related": {
+      "type": "array",
+      "items": { "type": "string", "format": "uri" },
+      "description": "URLs to related resources."
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": { "type": { "const": "article" } },
+        "required": ["type"]
+      },
+      "then": {
+        "properties": {
+          "content": {
+            "properties": {
+              "body": true
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "tutorial" } },
+        "required": ["type"]
+      },
+      "then": {
+        "properties": {
+          "content": {
+            "properties": {
+              "body": true,
+              "prerequisites": {
+                "type": "array",
+                "items": { "type": "string" },
+                "description": "Prerequisites before starting the tutorial."
+              },
+              "steps": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["title", "text"],
+                  "properties": {
+                    "title": { "type": "string" },
+                    "text": { "type": "string" }
+                  },
+                  "additionalProperties": false
+                },
+                "description": "Ordered tutorial steps."
+              },
+              "duration": {
+                "type": "string",
+                "description": "Estimated time to complete."
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "api-reference" } },
+        "required": ["type"]
+      },
+      "then": {
+        "properties": {
+          "content": {
+            "properties": {
+              "body": true,
+              "base_url": {
+                "type": "string",
+                "description": "API base URL."
+              },
+              "endpoints": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["method", "path", "description"],
+                  "properties": {
+                    "method": { "type": "string" },
+                    "path": { "type": "string" },
+                    "description": { "type": "string" }
+                  },
+                  "additionalProperties": false
+                },
+                "description": "API endpoints."
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "product" } },
+        "required": ["type"]
+      },
+      "then": {
+        "properties": {
+          "content": {
+            "properties": {
+              "body": true,
+              "price": {
+                "type": "string",
+                "description": "Price with currency symbol or amount."
+              },
+              "currency": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$",
+                "description": "ISO 4217 currency code."
+              },
+              "features": {
+                "type": "array",
+                "items": { "type": "string" },
+                "description": "Key product features."
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "recipe" } },
+        "required": ["type"]
+      },
+      "then": {
+        "properties": {
+          "content": {
+            "properties": {
+              "body": true,
+              "ingredients": {
+                "type": "array",
+                "items": { "type": "string" },
+                "description": "Ingredient list."
+              },
+              "steps": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["title", "text"],
+                  "properties": {
+                    "title": { "type": "string" },
+                    "text": { "type": "string" }
+                  },
+                  "additionalProperties": false
+                },
+                "description": "Cooking instruction steps."
+              },
+              "prep_time": {
+                "type": "string",
+                "description": "Preparation time."
+              },
+              "cook_time": {
+                "type": "string",
+                "description": "Cooking time."
+              },
+              "servings": {
+                "type": "string",
+                "description": "Number of servings."
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "faq" } },
+        "required": ["type"]
+      },
+      "then": {
+        "properties": {
+          "content": {
+            "properties": {
+              "body": true,
+              "questions": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["question", "answer"],
+                  "properties": {
+                    "question": { "type": "string" },
+                    "answer": { "type": "string" }
+                  },
+                  "additionalProperties": false
+                },
+                "description": "Question-answer pairs."
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "changelog" } },
+        "required": ["type"]
+      },
+      "then": {
+        "properties": {
+          "content": {
+            "properties": {
+              "body": true,
+              "entries": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["version", "date", "changes"],
+                  "properties": {
+                    "version": { "type": "string" },
+                    "date": { "type": "string" },
+                    "changes": {
+                      "type": "array",
+                      "items": { "type": "string" }
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "description": "Version changelog entries."
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "dataset" } },
+        "required": ["type"]
+      },
+      "then": {
+        "properties": {
+          "content": {
+            "properties": {
+              "body": true,
+              "format": {
+                "type": "string",
+                "description": "Data format (e.g. CSV, JSON, Parquet)."
+              },
+              "fields": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["name", "type", "description"],
+                  "properties": {
+                    "name": { "type": "string" },
+                    "type": { "type": "string" },
+                    "description": { "type": "string" }
+                  },
+                  "additionalProperties": false
+                },
+                "description": "Data field descriptions."
+              },
+              "rows": {
+                "type": "integer",
+                "minimum": 0,
+                "description": "Approximate row count."
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "event" } },
+        "required": ["type"]
+      },
+      "then": {
+        "properties": {
+          "content": {
+            "properties": {
+              "body": true,
+              "date": {
+                "type": "string",
+                "description": "ISO 8601 event date."
+              },
+              "location": {
+                "type": "string",
+                "description": "Venue name or \"Online\"."
+              },
+              "organizer": {
+                "type": "string",
+                "description": "Organizer name."
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": { "type": { "const": "profile" } },
+        "required": ["type"]
+      },
+      "then": {
+        "properties": {
+          "content": {
+            "properties": {
+              "body": true,
+              "name": {
+                "type": "string",
+                "description": "Full name."
+              },
+              "role": {
+                "type": "string",
+                "description": "Title or role."
+              },
+              "links": {
+                "type": "array",
+                "items": { "type": "string", "format": "uri" },
+                "description": "Profile URLs."
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    }
+  ]
+}

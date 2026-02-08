@@ -1,0 +1,8 @@
+{
+  "nosh": "1.0",
+  "type": "article",
+  "title": "My Blog Post",
+  "content": {
+    "body": "This is the structured content of my blog post."
+  }
+}

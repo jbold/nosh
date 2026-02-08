@@ -1,0 +1,6 @@
+# Standard robots.txt directives
+User-agent: *
+Allow: /
+
+# Nosh discovery directive
+Nosh: /.well-known/nosh

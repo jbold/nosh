@@ -1,0 +1,38 @@
+{
+  "nosh": "1.0",
+  "type": "tutorial",
+  "title": "Getting Started with Nosh",
+  "description": "Learn how to create your first nosh.json companion file.",
+  "url": "https://nosh.example.com/docs/getting-started",
+  "language": "en",
+  "authors": ["Nosh Contributors"],
+  "published": "2026-02-08",
+  "tags": ["nosh", "getting-started", "tutorial"],
+  "content": {
+    "body": "This tutorial walks you through creating your first nosh.json file for a web page.",
+    "prerequisites": [
+      "A published web page (HTML)",
+      "A text editor",
+      "Basic understanding of JSON"
+    ],
+    "steps": [
+      {
+        "title": "Create the file",
+        "text": "Create a new file named page.nosh.json alongside your HTML file."
+      },
+      {
+        "title": "Add required fields",
+        "text": "Add the four required fields: nosh (version), type, title, and content with at least a body field."
+      },
+      {
+        "title": "Add optional metadata",
+        "text": "Optionally add description, url, language, authors, published, tags, and related fields."
+      },
+      {
+        "title": "Validate",
+        "text": "Run the validator CLI: nosh validate page.nosh.json"
+      }
+    ],
+    "duration": "10 minutes"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "nosh": "1.0",
+  "pages": [
+    {
+      "url": "/blog/my-post.nosh.json",
+      "type": "article",
+      "title": "My Blog Post"
+    },
+    {
+      "url": "/docs/getting-started.nosh.json",
+      "type": "tutorial",
+      "title": "Getting Started with Nosh"
+    },
+    {
+      "url": "/api/reference.nosh.json",
+      "type": "api-reference",
+      "title": "API Reference"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "nosh": "1.0",
+  "type": "changelog",
+  "title": "Nosh Specification Changelog",
+  "description": "Version history for the Nosh specification.",
+  "url": "https://nosh.land/changelog",
+  "tags": ["nosh", "changelog", "releases"],
+  "content": {
+    "body": "All notable changes to the Nosh specification are documented here.",
+    "entries": [
+      {
+        "version": "1.0",
+        "date": "2026-02-08",
+        "changes": [
+          "Initial release of the Nosh specification",
+          "Defined 10 content types: article, tutorial, api-reference, product, recipe, faq, changelog, dataset, event, profile",
+          "Defined 4 discovery mechanisms with priority order",
+          "Published JSON Schema (draft 2020-12)",
+          "Released Rust validator CLI",
+          "Released Zola template for static site generation"
+        ]
+      }
+    ]
+  }
+}

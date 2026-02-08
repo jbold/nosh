@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nosh.land/schema/manifest.schema.json",
+  "title": "Nosh Discovery Manifest",
+  "description": "Schema for the Nosh discovery manifest served at /.well-known/nosh.",
+  "type": "object",
+  "required": ["nosh", "pages"],
+  "properties": {
+    "nosh": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+$",
+      "description": "Nosh specification version (MAJOR.MINOR)."
+    },
+    "pages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["url", "type", "title"],
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "URL to the .nosh file (absolute or relative path)."
+          },
+          "type": {
+            "type": "string",
+            "description": "Content type of the referenced Nosh file."
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Page title."
+          }
+        },
+        "additionalProperties": false
+      },
+      "description": "List of all Nosh file URLs on the site."
+    }
+  },
+  "additionalProperties": false
+}

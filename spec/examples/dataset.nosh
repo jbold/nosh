@@ -1,0 +1,34 @@
+{
+  "nosh": "1.0",
+  "type": "dataset",
+  "title": "Global Temperature Records 1880-2025",
+  "description": "Monthly global surface temperature anomalies from NOAA.",
+  "url": "https://data.example.com/global-temps",
+  "language": "en",
+  "authors": ["NOAA Climate Data Team"],
+  "published": "2025-12-01",
+  "updated": "2026-01-15",
+  "tags": ["climate", "temperature", "dataset", "noaa"],
+  "content": {
+    "body": "This dataset contains monthly global surface temperature anomalies relative to the 1901-2000 baseline. Data is sourced from NOAA's Global Historical Climatology Network and updated monthly.",
+    "format": "CSV",
+    "fields": [
+      {
+        "name": "year",
+        "type": "integer",
+        "description": "Calendar year of the observation"
+      },
+      {
+        "name": "month",
+        "type": "integer",
+        "description": "Calendar month (1-12)"
+      },
+      {
+        "name": "anomaly",
+        "type": "float",
+        "description": "Temperature anomaly in degrees Celsius relative to 1901-2000 baseline"
+      }
+    ],
+    "rows": 1740
+  }
+}

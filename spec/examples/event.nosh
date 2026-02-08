@@ -1,0 +1,15 @@
+{
+  "nosh": "1.0",
+  "type": "event",
+  "title": "NoshConf 2026",
+  "description": "The first conference dedicated to the Nosh specification and the agentic web.",
+  "url": "https://noshconf.example.com",
+  "language": "en",
+  "tags": ["conference", "nosh", "ai", "web-standards"],
+  "content": {
+    "body": "NoshConf 2026 brings together web developers, AI researchers, and standards enthusiasts to discuss the future of machine-readable web content. Topics include Nosh adoption patterns, content type design, agent discovery protocols, and building for the agentic web.",
+    "date": "2026-09-15",
+    "location": "Portland, OR",
+    "organizer": "Nosh Foundation"
+  }
+}
