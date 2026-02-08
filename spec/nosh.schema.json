@@ -2,9 +2,14 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://nosh.land/schema/nosh.schema.json",
   "title": "Nosh File",
-  "description": "Schema for Nosh companion files — structured, machine-readable content for AI agents.",
+  "description": "Schema for Nosh companion files \u2014 structured, machine-readable content for AI agents.",
   "type": "object",
-  "required": ["nosh", "type", "title", "content"],
+  "required": [
+    "nosh",
+    "type",
+    "title",
+    "content"
+  ],
   "properties": {
     "nosh": {
       "type": "string",
@@ -22,21 +27,29 @@
     },
     "content": {
       "type": "object",
-      "required": ["body"],
+      "required": [
+        "body"
+      ],
       "properties": {
         "body": {
           "description": "Main text content of the page.",
           "oneOf": [
-            { "type": "string", "minLength": 1 },
+            {
+              "type": "string",
+              "minLength": 1
+            },
             {
               "type": "array",
-              "items": { "type": "string" },
+              "items": {
+                "type": "string"
+              },
               "minItems": 1
             }
           ]
         }
       },
-      "description": "Structured knowledge payload. Shape varies by content type but always includes body."
+      "description": "Structured knowledge payload. Shape varies by content type but always includes body.",
+      "additionalProperties": true
     },
     "description": {
       "type": "string",
@@ -54,7 +67,9 @@
     },
     "authors": {
       "type": "array",
-      "items": { "type": "string" },
+      "items": {
+        "type": "string"
+      },
       "description": "Author names."
     },
     "published": {
@@ -67,21 +82,32 @@
     },
     "tags": {
       "type": "array",
-      "items": { "type": "string" },
+      "items": {
+        "type": "string"
+      },
       "description": "Topic tags for categorization."
     },
     "related": {
       "type": "array",
-      "items": { "type": "string", "format": "uri" },
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
       "description": "URLs to related resources."
     }
   },
-  "additionalProperties": false,
+  "additionalProperties": true,
   "allOf": [
     {
       "if": {
-        "properties": { "type": { "const": "article" } },
-        "required": ["type"]
+        "properties": {
+          "type": {
+            "const": "article"
+          }
+        },
+        "required": [
+          "type"
+        ]
       },
       "then": {
         "properties": {
@@ -89,15 +115,21 @@
             "properties": {
               "body": true
             },
-            "additionalProperties": false
+            "additionalProperties": true
           }
         }
       }
     },
     {
       "if": {
-        "properties": { "type": { "const": "tutorial" } },
-        "required": ["type"]
+        "properties": {
+          "type": {
+            "const": "tutorial"
+          }
+        },
+        "required": [
+          "type"
+        ]
       },
       "then": {
         "properties": {
@@ -106,17 +138,26 @@
               "body": true,
               "prerequisites": {
                 "type": "array",
-                "items": { "type": "string" },
+                "items": {
+                  "type": "string"
+                },
                 "description": "Prerequisites before starting the tutorial."
               },
               "steps": {
                 "type": "array",
                 "items": {
                   "type": "object",
-                  "required": ["title", "text"],
+                  "required": [
+                    "title",
+                    "text"
+                  ],
                   "properties": {
-                    "title": { "type": "string" },
-                    "text": { "type": "string" }
+                    "title": {
+                      "type": "string"
+                    },
+                    "text": {
+                      "type": "string"
+                    }
                   },
                   "additionalProperties": false
                 },
@@ -127,15 +168,21 @@
                 "description": "Estimated time to complete."
               }
             },
-            "additionalProperties": false
+            "additionalProperties": true
           }
         }
       }
     },
     {
       "if": {
-        "properties": { "type": { "const": "api-reference" } },
-        "required": ["type"]
+        "properties": {
+          "type": {
+            "const": "api-reference"
+          }
+        },
+        "required": [
+          "type"
+        ]
       },
       "then": {
         "properties": {
@@ -150,26 +197,42 @@
                 "type": "array",
                 "items": {
                   "type": "object",
-                  "required": ["method", "path", "description"],
+                  "required": [
+                    "method",
+                    "path",
+                    "description"
+                  ],
                   "properties": {
-                    "method": { "type": "string" },
-                    "path": { "type": "string" },
-                    "description": { "type": "string" }
+                    "method": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    }
                   },
                   "additionalProperties": false
                 },
                 "description": "API endpoints."
               }
             },
-            "additionalProperties": false
+            "additionalProperties": true
           }
         }
       }
     },
     {
       "if": {
-        "properties": { "type": { "const": "product" } },
-        "required": ["type"]
+        "properties": {
+          "type": {
+            "const": "product"
+          }
+        },
+        "required": [
+          "type"
+        ]
       },
       "then": {
         "properties": {
@@ -187,19 +250,27 @@
               },
               "features": {
                 "type": "array",
-                "items": { "type": "string" },
+                "items": {
+                  "type": "string"
+                },
                 "description": "Key product features."
               }
             },
-            "additionalProperties": false
+            "additionalProperties": true
           }
         }
       }
     },
     {
       "if": {
-        "properties": { "type": { "const": "recipe" } },
-        "required": ["type"]
+        "properties": {
+          "type": {
+            "const": "recipe"
+          }
+        },
+        "required": [
+          "type"
+        ]
       },
       "then": {
         "properties": {
@@ -208,17 +279,26 @@
               "body": true,
               "ingredients": {
                 "type": "array",
-                "items": { "type": "string" },
+                "items": {
+                  "type": "string"
+                },
                 "description": "Ingredient list."
               },
               "steps": {
                 "type": "array",
                 "items": {
                   "type": "object",
-                  "required": ["title", "text"],
+                  "required": [
+                    "title",
+                    "text"
+                  ],
                   "properties": {
-                    "title": { "type": "string" },
-                    "text": { "type": "string" }
+                    "title": {
+                      "type": "string"
+                    },
+                    "text": {
+                      "type": "string"
+                    }
                   },
                   "additionalProperties": false
                 },
@@ -237,15 +317,21 @@
                 "description": "Number of servings."
               }
             },
-            "additionalProperties": false
+            "additionalProperties": true
           }
         }
       }
     },
     {
       "if": {
-        "properties": { "type": { "const": "faq" } },
-        "required": ["type"]
+        "properties": {
+          "type": {
+            "const": "faq"
+          }
+        },
+        "required": [
+          "type"
+        ]
       },
       "then": {
         "properties": {
@@ -256,25 +342,38 @@
                 "type": "array",
                 "items": {
                   "type": "object",
-                  "required": ["question", "answer"],
+                  "required": [
+                    "question",
+                    "answer"
+                  ],
                   "properties": {
-                    "question": { "type": "string" },
-                    "answer": { "type": "string" }
+                    "question": {
+                      "type": "string"
+                    },
+                    "answer": {
+                      "type": "string"
+                    }
                   },
                   "additionalProperties": false
                 },
                 "description": "Question-answer pairs."
               }
             },
-            "additionalProperties": false
+            "additionalProperties": true
           }
         }
       }
     },
     {
       "if": {
-        "properties": { "type": { "const": "changelog" } },
-        "required": ["type"]
+        "properties": {
+          "type": {
+            "const": "changelog"
+          }
+        },
+        "required": [
+          "type"
+        ]
       },
       "then": {
         "properties": {
@@ -285,13 +384,23 @@
                 "type": "array",
                 "items": {
                   "type": "object",
-                  "required": ["version", "date", "changes"],
+                  "required": [
+                    "version",
+                    "date",
+                    "changes"
+                  ],
                   "properties": {
-                    "version": { "type": "string" },
-                    "date": { "type": "string" },
+                    "version": {
+                      "type": "string"
+                    },
+                    "date": {
+                      "type": "string"
+                    },
                     "changes": {
                       "type": "array",
-                      "items": { "type": "string" }
+                      "items": {
+                        "type": "string"
+                      }
                     }
                   },
                   "additionalProperties": false
@@ -299,15 +408,21 @@
                 "description": "Version changelog entries."
               }
             },
-            "additionalProperties": false
+            "additionalProperties": true
           }
         }
       }
     },
     {
       "if": {
-        "properties": { "type": { "const": "dataset" } },
-        "required": ["type"]
+        "properties": {
+          "type": {
+            "const": "dataset"
+          }
+        },
+        "required": [
+          "type"
+        ]
       },
       "then": {
         "properties": {
@@ -322,11 +437,21 @@
                 "type": "array",
                 "items": {
                   "type": "object",
-                  "required": ["name", "type", "description"],
+                  "required": [
+                    "name",
+                    "type",
+                    "description"
+                  ],
                   "properties": {
-                    "name": { "type": "string" },
-                    "type": { "type": "string" },
-                    "description": { "type": "string" }
+                    "name": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    }
                   },
                   "additionalProperties": false
                 },
@@ -338,15 +463,21 @@
                 "description": "Approximate row count."
               }
             },
-            "additionalProperties": false
+            "additionalProperties": true
           }
         }
       }
     },
     {
       "if": {
-        "properties": { "type": { "const": "event" } },
-        "required": ["type"]
+        "properties": {
+          "type": {
+            "const": "event"
+          }
+        },
+        "required": [
+          "type"
+        ]
       },
       "then": {
         "properties": {
@@ -366,15 +497,21 @@
                 "description": "Organizer name."
               }
             },
-            "additionalProperties": false
+            "additionalProperties": true
           }
         }
       }
     },
     {
       "if": {
-        "properties": { "type": { "const": "profile" } },
-        "required": ["type"]
+        "properties": {
+          "type": {
+            "const": "profile"
+          }
+        },
+        "required": [
+          "type"
+        ]
       },
       "then": {
         "properties": {
@@ -391,11 +528,14 @@
               },
               "links": {
                 "type": "array",
-                "items": { "type": "string", "format": "uri" },
+                "items": {
+                  "type": "string",
+                  "format": "uri"
+                },
                 "description": "Profile URLs."
               }
             },
-            "additionalProperties": false
+            "additionalProperties": true
           }
         }
       }

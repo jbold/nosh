@@ -99,12 +99,30 @@ fn valid_profile() {
 }
 
 #[test]
+fn valid_additional_top_level_property() {
+    nosh_cmd()
+        .args(["validate", "tests/fixtures/valid/additional_top_level_property.nosh"])
+        .assert()
+        .success()
+        .stdout(predicate::str::contains("Valid"));
+}
+
+#[test]
+fn valid_extra_content_field() {
+    nosh_cmd()
+        .args(["validate", "tests/fixtures/valid/tutorial_extra_content_field.nosh"])
+        .assert()
+        .success()
+        .stdout(predicate::str::contains("Valid"));
+}
+
+#[test]
 fn valid_directory_scan() {
     nosh_cmd()
         .args(["validate", "tests/fixtures/valid"])
         .assert()
         .success()
-        .stdout(predicate::str::contains("Valid").count(10));
+        .stdout(predicate::str::contains("Valid").count(12));
 }
 
 #[test]
@@ -191,15 +209,6 @@ fn invalid_bad_version_format() {
 }
 
 #[test]
-fn invalid_additional_top_level_property() {
-    nosh_cmd()
-        .args(["validate", "tests/fixtures/invalid/additional_top_level_property.nosh"])
-        .assert()
-        .code(1)
-        .stdout(predicate::str::contains("Invalid"));
-}
-
-#[test]
 fn invalid_bad_language_tag() {
     nosh_cmd()
         .args(["validate", "tests/fixtures/invalid/bad_language_tag.nosh"])
@@ -212,15 +221,6 @@ fn invalid_bad_language_tag() {
 fn invalid_wrong_body_type() {
     nosh_cmd()
         .args(["validate", "tests/fixtures/invalid/wrong_body_type.nosh"])
-        .assert()
-        .code(1)
-        .stdout(predicate::str::contains("Invalid"));
-}
-
-#[test]
-fn invalid_tutorial_extra_content_field() {
-    nosh_cmd()
-        .args(["validate", "tests/fixtures/invalid/tutorial_extra_content_field.nosh"])
         .assert()
         .code(1)
         .stdout(predicate::str::contains("Invalid"));
